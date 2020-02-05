@@ -100,7 +100,7 @@ public class Toast extends CordovaPlugin {
           }
 
           final android.widget.Toast toast = android.widget.Toast.makeText(
-              IS_AT_LEAST_LOLLIPOP ? cordova.getActivity().getWindow().getBaseContext() : cordova.getActivity().getApplicationContext(),
+              IS_AT_LEAST_LOLLIPOP ? cordova.getActivity().getWindow().getContext() : cordova.getActivity().getApplicationContext(),
               fontScale,
               "short".equalsIgnoreCase(duration) ? android.widget.Toast.LENGTH_SHORT : android.widget.Toast.LENGTH_LONG
           );
