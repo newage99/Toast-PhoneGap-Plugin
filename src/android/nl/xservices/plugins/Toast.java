@@ -91,14 +91,10 @@ public class Toast extends CordovaPlugin {
           }
 
           //String fontScale = "";
-          try {
-            Configuration config = cordova.getActivity().getResources().getConfiguration();
-            config.fontScale = 1;
-            cordova.getActivity().getResources().updateConfiguration(config, cordova.getActivity().getResources().getDisplayMetrics());
-            //fontScale = String.valueOf(cordova.getActivity().getResources().getConfiguration().fontScale);
-          } catch (Exception e) {
-            fontScale = e.toString();
-          }
+          Configuration config = cordova.getActivity().getResources().getConfiguration();
+          config.fontScale = 1;
+          cordova.getActivity().getResources().updateConfiguration(config, cordova.getActivity().getResources().getDisplayMetrics());
+          //fontScale = String.valueOf(cordova.getActivity().getResources().getConfiguration().fontScale);
 
           final android.widget.Toast toast = android.widget.Toast.makeText(
               IS_AT_LEAST_LOLLIPOP ? cordova.getActivity().getWindow().getContext() : cordova.getActivity().getApplicationContext(),
