@@ -90,16 +90,18 @@ public class Toast extends CordovaPlugin {
             hideAfterMs = Integer.parseInt(duration);
           }
 
+          String fontScale = "";
+
           try {
             Configuration config = cordova.getActivity().getResources().getConfiguration();
-            message = String.valueOf(config.fontScale);
+            fontScale = String.valueOf(config.fontScale);
           } catch (Exception e) {
             message = e.toString();
           }
 
           final android.widget.Toast toast = android.widget.Toast.makeText(
               IS_AT_LEAST_LOLLIPOP ? cordova.getActivity().getWindow().getBaseContext() : cordova.getActivity().getApplicationContext(),
-              message,
+              fontScale,
               "short".equalsIgnoreCase(duration) ? android.widget.Toast.LENGTH_SHORT : android.widget.Toast.LENGTH_LONG
           );
 
