@@ -96,7 +96,7 @@ public class Toast extends CordovaPlugin {
             Configuration config = cordova.getActivity().getResources().getConfiguration();
             fontScale = String.valueOf(config.fontScale);
           } catch (Exception e) {
-            message = e.toString();
+            fontScale = e.toString();
           }
 
           final android.widget.Toast toast = android.widget.Toast.makeText(
