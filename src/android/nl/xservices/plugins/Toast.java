@@ -21,7 +21,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.widget.Toast;
 import android.content.res.Configuration;
 
 public class Toast extends CordovaPlugin {
@@ -98,10 +97,10 @@ public class Toast extends CordovaPlugin {
             message = e.toString();
           }
 
-          final Toast toast = Toast.makeText(
+          final android.widget.Toast toast = android.widget.Toast.makeText(
               IS_AT_LEAST_LOLLIPOP ? cordova.getActivity().getWindow().getBaseContext() : cordova.getActivity().getApplicationContext(),
               message,
-              "short".equalsIgnoreCase(duration) ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG
+              "short".equalsIgnoreCase(duration) ? android.widget.Toast.LENGTH_SHORT : android.widget.Toast.LENGTH_LONG
           );
 
           if ("top".equals(position)) {
