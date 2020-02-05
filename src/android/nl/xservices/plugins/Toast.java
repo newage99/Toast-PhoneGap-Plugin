@@ -95,7 +95,7 @@ public class Toast extends CordovaPlugin {
           try {
             Configuration config = cordova.getActivity().getResources().getConfiguration();
             config.fontScale = 1;
-            cordova.getActivity().getResources().updateConfiguration(config, cordova.getActivity().getResources().getDisplayMetrics());
+            //cordova.getActivity().getResources().updateConfiguration(config, cordova.getActivity().getResources().getDisplayMetrics());
             fontScale = String.valueOf(cordova.getActivity().getResources().getConfiguration().fontScale);
           } catch (Exception e) {
             fontScale = e.toString();
