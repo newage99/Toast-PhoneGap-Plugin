@@ -21,6 +21,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.widget.Toast;
+import android.content.res.Configuration;
+
 public class Toast extends CordovaPlugin {
 
   private static final String ACTION_SHOW_EVENT = "show";
@@ -87,10 +90,18 @@ public class Toast extends CordovaPlugin {
             // assuming a number of ms
             hideAfterMs = Integer.parseInt(duration);
           }
-          final android.widget.Toast toast = android.widget.Toast.makeText(
-              IS_AT_LEAST_LOLLIPOP ? cordova.getActivity().getWindow().getContext() : cordova.getActivity().getApplicationContext(),
+
+          try {
+            Configuration config = cordova.getActivity().getResources().getConfiguration();
+            message = String.valueOf(config.fontScale);
+          } catch (Exception e) {
+            message = e.toString();
+          }
+
+          final Toast toast = Toast.makeText(
+              IS_AT_LEAST_LOLLIPOP ? cordova.getActivity().getWindow().getBaseContext() : cordova.getActivity().getApplicationContext(),
               message,
-              "short".equalsIgnoreCase(duration) ? android.widget.Toast.LENGTH_SHORT : android.widget.Toast.LENGTH_LONG
+              "short".equalsIgnoreCase(duration) ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG
           );
 
           if ("top".equals(position)) {
